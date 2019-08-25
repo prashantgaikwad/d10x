@@ -22,6 +22,7 @@
     ],
     "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-        "quotes": ["error", "double"]
+        "quotes": ["error", "double"],
+        "react/jsx-one-expression-per-line": [0]
     }
 }

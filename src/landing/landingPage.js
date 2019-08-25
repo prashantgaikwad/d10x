@@ -1,34 +1,52 @@
 import React from "react";
 import {
-  Tab, Row, Col, Nav,
+  Tab, Nav,
 } from "react-bootstrap";
-import "./landing.css";
+import "./Landing.css";
+import SectorSummary from "./SectorSummary";
+import sectors from "../mock/sectors";
 
-export default function LandingPage() {
-  return (
-    <div className="landing-page">
-      <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-        <Row>
-          <Col sm={3}>
-            <Nav variant="pills" className="flex-column">
-              <Nav.Item>
-                <Nav.Link eventKey="first">Tab 1</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="second">Tab 2</Nav.Link>
-              </Nav.Item>
-            </Nav>
-          </Col>
-          <Col sm={9}>
-            <Tab.Content>
-              <Tab.Pane eventKey="first">
-              </Tab.Pane>
-              <Tab.Pane eventKey="second">
-              </Tab.Pane>
-            </Tab.Content>
-          </Col>
-        </Row>
-      </Tab.Container>
-    </div>
-  );
+export default class LandingPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedSector: 0
+    }
+  }
+
+  renderTabs = () => {
+    return sectors.map((sector, index) => (
+      <Nav.Item key={index} onClick={() => {
+        this.setState({ selectedSector: index });
+      }}>
+        <Nav.Link eventKey={index}>{sector.sectorName}</Nav.Link>
+      </Nav.Item>
+    ))
+  }
+
+  render() {
+    const { selectedSector } = this.state;
+    return (
+      <div className="landing-page">
+        <div style={{ flex: 1 }}>
+          <Tab.Container id="left-tabs-example" defaultActiveKey={0}>
+            <div style={{ display: "flex"}}>
+              <div style={{ flex: 1}}>
+                <Nav variant="pills" className="flex-column">
+                  {this.renderTabs()}
+                </Nav>
+              </div>
+              <div style={{ flex: 4 }}>
+                <Tab.Content>
+                  <SectorSummary sector={sectors[selectedSector]}/>
+                </Tab.Content>
+              </div>
+            </div>
+          </Tab.Container>
+        </div>
+        <div style={{ flex: 2, height: "100%" }}>
+        </div>
+      </div>
+    );
+  }
 }
