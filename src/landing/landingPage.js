@@ -1,8 +1,9 @@
 import React from "react";
 import {
-  Tab, Nav,
+  Tab, Nav, Card, Accordion, Button,
 } from "react-bootstrap";
 import "./Landing.css";
+import{ map } from "lodash";
 import SectorSummary from "./SectorSummary";
 import sectors from "../mock/sectors";
 
@@ -45,6 +46,20 @@ export default class LandingPage extends React.Component {
           </Tab.Container>
         </div>
         <div style={{ flex: 2, height: "100%" }}>
+          <Accordion>
+            {map(sectors, ((sector, index) => (  
+              <Card key={index}>
+                <Accordion.Toggle as={Card.Header} variant="link" eventKey={index}>
+                  <div>{sector.sectorName}</div>
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey={index}>
+                  <Card.Body>
+                  </Card.Body>
+                </Accordion.Collapse>
+              </Card>
+              ))
+            )}
+          </Accordion>
         </div>
       </div>
     );

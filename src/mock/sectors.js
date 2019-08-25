@@ -1,5 +1,6 @@
 export default [{
   sectorName: "Technology",
+  sentiment: "POSITIVE",
   news: [{
     headline: "Apple aquires Beats by Dre",
     date: "23 Aug, 2019",
@@ -24,6 +25,7 @@ export default [{
   }],
 }, {
   sectorName: "Oil And Gas",
+  sentiment: "NEGATIVE",
   news: [{
     headline: "Reliance to open a new refinery in Gujrat",
     date: "24 Aug, 2019",
