@@ -7,6 +7,8 @@ import{ map } from "lodash";
 import SectorSummary from "./SectorSummary";
 import sectors from "../mock/sectors";
 
+const sentimentStyle = { fontSize: 20, alignItems: "center", paddingRight: 4 };
+
 export default class LandingPage extends React.Component {
   constructor(props) {
     super(props);
@@ -46,11 +48,18 @@ export default class LandingPage extends React.Component {
           </Tab.Container>
         </div>
         <div style={{ flex: 2, height: "100%" }}>
+          <hr />
+          <h4 style={{ padding: "1px 4px"}}>All Sectors</h4>
           <Accordion>
             {map(sectors, ((sector, index) => (  
               <Card key={index}>
-                <Accordion.Toggle as={Card.Header} variant="link" eventKey={index}>
-                  <div>{sector.sectorName}</div>
+                <Accordion.Toggle as={Card.Header} variant="link" eventKey={index} style={{ display: "flex"}}>
+                  <div style={{ flex: 2}}>{sector.sectorName}</div>
+                  <div style={{ flex: 1}}>
+                    {sector.sentiment === "POSITIVE" ?
+                      <span style={{...sentimentStyle, color: "green" }}>▲</span> :
+                      <span style={{...sentimentStyle, color: "red" }}>▼</span>}
+                  </div>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey={index}>
                   <Card.Body>
