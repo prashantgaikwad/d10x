@@ -6,7 +6,7 @@ export default function NewsItem({ news = {} }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", padding: "0 4px" }}>
       <b>{news.headline}</b>
-      <div>Date: {news.date}</div>
+      <div>Date: {news.publishDate}</div>
       <hr />
     </div>
   );

@@ -1,0 +1,15 @@
+.sector-page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  padding: 6px !important;
+}
+
+.card-body {
+  padding: 6px !important;
+  overflow-y: auto;
+}

@@ -1,13 +1,18 @@
 import React from "react";
 import "./App.css";
-import LandingPage from "./landing/LandingPage";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import LandingPage from "./pages/LandingPage";
+import NewsPage from "./pages/NewsPage";
+import SectorPage from "./pages/SectorPage";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <LandingPage />
-      </header>
+      <Router>
+        <Route path="/" exact component={LandingPage} />
+        <Route path="/sectors/" component={SectorPage} />
+        <Route path="/news/" component={NewsPage} />
+      </Router>
     </div>
   );
 }

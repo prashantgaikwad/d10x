@@ -1,18 +1,21 @@
 export default [{
-  sectorName: "Technology",
-  sentiment: "POSITIVE",
-  news: [{
+  name: "Technology",
+  sentiment: {
+    direction: "POSITIVE",
+    score: 80,
+  },
+  relatedNews: [{
     headline: "Apple aquires Beats by Dre",
-    date: "23 Aug, 2019",
+    publishDate: "23 Aug, 2019",
   }, {
     headline: "Apple to set manufacturing unit in India",
-    date: "25 Aug, 2019",
+    publishDate: "25 Aug, 2019",
   }, {
     headline: "Apple aquires Beats by Dre",
-    date: "23 Aug, 2019",
+    publishDate: "23 Aug, 2019",
   }, {
     headline: "Apple to set manufacturing unit in India",
-    date: "25 Aug, 2019",
+    publishDate: "25 Aug, 2019",
   }],
   trends: [{
     name: "Privacy",
@@ -24,20 +27,23 @@ export default [{
     weight: 250,
   }],
 }, {
-  sectorName: "Oil And Gas",
-  sentiment: "NEGATIVE",
-  news: [{
+  name: "Oil And Gas",
+  sentiment: {
+    direction: "NEGATIVE",
+    score: 80,
+  },
+  relatedNews: [{
     headline: "Reliance to open a new refinery in Gujrat",
-    date: "24 Aug, 2019",
+    publishDate: "24 Aug, 2019",
   }, {
     headline: "Air India owes 2000 Cr to Oil companies",
-    date: "26 Aug, 2019",
+    publishDate: "26 Aug, 2019",
   }, {
     headline: "Reliance to open a new refinery in Gujrat",
-    date: "24 Aug, 2019",
+    publishDate: "24 Aug, 2019",
   }, {
     headline: "Air India owes 2000 Cr to Oil companies",
-    date: "26 Aug, 2019",
+    publishDate: "26 Aug, 2019",
   }],
   trends: [{
     name: "Air India",

@@ -19,7 +19,7 @@ export default function SectorSummary({ sector }) {
         <Card>
           <Card.Header><b>News</b></Card.Header>
           <Card.Body>
-            {map(sector.news, ((newsItem) => (<NewsItem news={newsItem} />)))}
+            {map(sector.relatedNews, ((newsItem) => (<NewsItem news={newsItem} />)))}
           </Card.Body>
         </Card>
       </div>
