@@ -13,3 +13,15 @@
   padding: 6px !important;
   overflow-y: auto;
 }
+
+.open-card ::before {
+  font-family: FontAwesome;
+  content: "\f103";
+  margin-right: 4px;
+}
+
+.close-card ::before{
+  font-family: FontAwesome;
+  content: "\f101";
+  margin-right: 4px;
+}

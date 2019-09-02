@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  Tab, Nav, Card, Accordion, Navbar,
+  Tab, Nav, Card, Navbar, Collapse,
 } from "react-bootstrap";
 import axios from "axios";
 import "./Landing.css";
@@ -19,6 +19,7 @@ export default class LandingPage extends React.Component {
       selectedSector: 0,
       loading: true,
       sectors: {},
+      cardStateMap: {},
     };
   }
   
@@ -45,6 +46,37 @@ export default class LandingPage extends React.Component {
         <Nav.Link eventKey={index}>{sector.name}</Nav.Link>
       </Nav.Item>
     ));
+  }
+
+  renderSectors() {
+    const { sectors, cardStateMap } = this.state;
+    return map(sectors, ((sector, index) => (
+      <Card key={index}>
+        <Card.Header
+          style={{ display: "flex" }}
+          onClick={() => {
+            const newState = { ...cardStateMap };
+            newState[index] = !cardStateMap[index];
+            this.setState({ cardStateMap: newState });
+          }}
+          aria-controls="example-collapse-text"
+          aria-expanded={!!cardStateMap[index]}
+        >
+          <div style={{ flex: 2 }} className={!!cardStateMap[index] ? "open-card" : "close-card"}>
+            <a href={`/sectors/?sector=${sector.name}`}>{sector.name}</a>
+          </div>
+          <div style={{ flex: 1 }}>
+            {sector.sentiment.direction === "POSITIVE"
+              ? <span style={{ ...sentimentStyle, color: "green" }}>▲</span>
+              : <span style={{ ...sentimentStyle, color: "red" }}>▼</span>}
+          </div>
+        </Card.Header>
+        <Collapse in={!!cardStateMap[index]}>
+          <div id="example-collapse-text" style={{ minHeight: 100 }}>
+          </div>
+        </Collapse>
+      </Card>
+    )));
   }
 
   render() {
@@ -81,26 +113,9 @@ export default class LandingPage extends React.Component {
               <Navbar bg="dark" variant="dark" style={{ padding: "0 1rem" }}>
                 <Navbar.Brand>All Sectors</Navbar.Brand>
               </Navbar>
-              <Accordion>
-                {map(sectors, ((sector, index) => (
-                  <Card key={index}>
-                    <Accordion.Toggle as={Card.Header} variant="link" eventKey={index} style={{ display: "flex" }}>
-                      <div style={{ flex: 2 }}>
-                        <a href={`/sectors/?sector=${sector.name}`}>{sector.name}</a>
-                      </div>
-                      <div style={{ flex: 1 }}>
-                        {sector.sentiment.direction === "POSITIVE"
-                          ? <span style={{ ...sentimentStyle, color: "green" }}>▲</span>
-                          : <span style={{ ...sentimentStyle, color: "red" }}>▼</span>}
-                      </div>
-                    </Accordion.Toggle>
-                    <Accordion.Collapse eventKey={index}>
-                      <Card.Body>
-                      </Card.Body>
-                    </Accordion.Collapse>
-                  </Card>
-                )))}
-              </Accordion>
+              <div>
+                {this.renderSectors()}
+              </div>
             </div>
           </div>
         )}
