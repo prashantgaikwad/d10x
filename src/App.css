@@ -1,3 +1,4 @@
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
 .App {
 }
 
@@ -11,7 +12,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-size: calc(8px + 1vmin);
+  /* font-size: calc(8px + 1vmin); */
 }
 
 .App-link {

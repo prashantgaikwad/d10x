@@ -1,0 +1,9 @@
+.tag:before{
+  font-family: FontAwesome;
+  content: "\f292"
+  /* "\f02b"; */
+}
+.tag {
+  font-size: 12px;
+  margin-right: 4px;
+}
