@@ -13,7 +13,6 @@ const subheaderStyle = {
 
 export default function SectorSummary({ sector }) {
   return (
-
     <div className="sector-summary" style={{ display: "flex" }}>
       <div style={{ flex: 3 }}>
         <Card>
@@ -27,7 +26,7 @@ export default function SectorSummary({ sector }) {
         <Card>
           <Card.Header><b>Trends</b></Card.Header>
           <Card.Body>
-            {map(sector.trends, (trend) => <TrendItem trend={trend} />)}
+            {map(sector.trends, (trend, index) => <TrendItem key={index} trend={trend} />)}
           </Card.Body>
         </Card>
       </div>
