@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import React from "react";
 import {
   Tab, Nav, Card, Navbar, Collapse,
@@ -22,7 +23,7 @@ export default class LandingPage extends React.Component {
       cardStateMap: {},
     };
   }
-  
+
   componentDidMount() {
     const url = `${ROOT_URL}&s=dark`;
     this.setState({ loading: true });
@@ -45,6 +46,21 @@ export default class LandingPage extends React.Component {
       >
         <Nav.Link eventKey={index}>{sector.name}</Nav.Link>
       </Nav.Item>
+    ));
+  }
+
+  renderSubsectors(subsectors = []) {
+    return map(subsectors, (sector) => (
+      <div style={{ backgroundColor: "aliceblue", padding: "6px 0px 6px 30px", display: "flex" }}>
+        <div style={{ flex: 2 }}>
+          <a href={`/sectors/?sector=${sector.name}`}>{sector.name}</a>
+        </div>
+        <div style={{ flex: 1 }}>
+          {sector.sentiment.direction === "POSITIVE"
+            ? <span style={{ ...sentimentStyle, color: "green" }}>▲</span>
+            : <span style={{ ...sentimentStyle, color: "red" }}>▼</span>}
+        </div>
+      </div>
     ));
   }
 
@@ -73,6 +89,7 @@ export default class LandingPage extends React.Component {
         </Card.Header>
         <Collapse in={!!cardStateMap[index]}>
           <div id="example-collapse-text" style={{ minHeight: 100 }}>
+            {this.renderSubsectors(sector.sectors)}
           </div>
         </Collapse>
       </Card>
@@ -83,7 +100,7 @@ export default class LandingPage extends React.Component {
     const { selectedSector, loading, sectors } = this.state;
     return (
       <div className="landing-page">
-        <Navbar bg="dark" variant="dark" style={{ padding: "0 1rem"}}>
+        <Navbar bg="dark" variant="dark" style={{ padding: "0 1rem" }}>
           <Navbar.Brand>Top Sectors</Navbar.Brand>
         </Navbar>
         {loading ? (

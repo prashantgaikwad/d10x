@@ -14,13 +14,13 @@
   overflow-y: auto;
 }
 
-.open-card ::before {
+.open-card :before {
   font-family: FontAwesome;
   content: "\f103";
   margin-right: 4px;
 }
 
-.close-card ::before{
+.close-card :before{
   font-family: FontAwesome;
   content: "\f101";
   margin-right: 4px;

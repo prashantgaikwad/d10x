@@ -4,6 +4,24 @@ export default [{
     direction: "POSITIVE",
     score: 80,
   },
+  sectors: [
+    {
+      name: "Mobile",
+      sentiment: {
+        direction: "POSITIVE",
+        score: 80,
+      },
+      relatedNews: [{
+        headline: "Apple aquires Beats by Dre",
+        publishDate: "23 Aug, 2019",
+        publishUrl: "https://google.com",
+        tags: [
+          "Privacy",
+          "AI",
+        ],
+      }],
+    },
+  ],
   relatedNews: [{
     headline: "Apple aquires Beats by Dre",
     publishDate: "23 Aug, 2019",
